@@ -1,5 +1,5 @@
 import { getTodos } from '@/lib/apis';
-import Other from './Other';
+import Other from '@/components/Other';
 import TodoItem from './TodoItem';
 
 export default async function TodosPage() {
@@ -11,7 +11,6 @@ export default async function TodosPage() {
 
   return (
     <section>
-      <h1>Todos</h1>
       <Other />
       <ul className="list-none">
         {todos.map((todo: Todo) =>

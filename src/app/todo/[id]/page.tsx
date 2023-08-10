@@ -1,6 +1,7 @@
 // This is a dynamic route.
 
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { getTodos } from '@/lib/apis';
 
 type Params = {
@@ -10,12 +11,12 @@ type Params = {
 }
 
 export default async function TodoPage({ params: { id } }: Params) {
-  const todos: Todo[] = await getTodos();
-  console.log('page.tsx TodoPage: todos =', todos);
-
+  // params properties are always strings.
   const number = Number(id);
+
+  const todos: Todo[] = await getTodos();
   const todo = todos.find(t => t.id === number);
-  console.log('page.tsx TodoPage: todo =', todo);
+  if (!todo) return notFound();
 
   return (
     <section>
@@ -23,7 +24,9 @@ export default async function TodoPage({ params: { id } }: Params) {
       <p>Id: {todo.id}</p>
       <p>Title: {todo?.title ?? "missing title"}</p>
       <p>Completed: {String(todo.completed)}</p>
-      <Link className="button mt-2" href="/todos">Back</Link>
+      <Link href="/todos">
+        <div className="button mt-2">Back</div>
+      </Link>
     </section >
   )
 }

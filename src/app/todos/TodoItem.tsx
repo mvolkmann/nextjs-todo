@@ -2,6 +2,16 @@
 
 import Link from 'next/link';
 
+import { Borel } from 'next/font/google';
+const font = Borel({
+  // This allows a fallback font to be used until the
+  // requested font has been loaded and can be swapped in.
+  display: 'swap',
+  subsets: ['latin'],
+  // "Variable fonts" do not need to specify weights.
+  weight: '400' // can be an array of weight strings
+});
+
 function getClassName(todo: Todo): string {
   return todo.completed ? 'line-through' : '';
 }
@@ -25,16 +35,19 @@ export default function TodoItem(props: Props) {
 
   return (
     <li key={props.key}>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={onChange}
-      />
-      <span className={getClassName(todo)} style={getStyle(todo)}>
-        {todo.title}
-      </span>
-      <button className="bg-white rounded space-x-4">Delete</button>
-      <Link href={`/todo/${todo.id}`}>Jump</Link>
+      {/* font.className is an auto-generated CSS class name. */}
+      <div className={`flex gap-2 items-center ${font.className}`}>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={onChange}
+        />
+        <span className={getClassName(todo)} style={getStyle(todo)}>
+          {todo.title}
+        </span>
+        <button>🗑</button>
+        <Link className="button" href={`/todo/${todo.id}`}>Jump</Link>
+      </div>
     </li>
   )
 }
