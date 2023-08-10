@@ -1,6 +1,6 @@
 'use client'; // needed to specify event handling
 
-import { type Todo } from './types';
+import Link from 'next/link';
 
 function getClassName(todo: Todo): string {
   return todo.completed ? 'line-through' : '';
@@ -34,6 +34,7 @@ export default function TodoItem(props: Props) {
         {todo.title}
       </span>
       <button className="bg-white rounded space-x-4">Delete</button>
+      <Link href={`/todo/${todo.id}`}>Jump</Link>
     </li>
   )
 }
