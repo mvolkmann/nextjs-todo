@@ -16,7 +16,7 @@ export default function Error({
 
   return (
     <section>
-      <h2>Something went wrong!</h2>
+      <h2>{error.message}</h2>
       {/* Attempt to recover by trying to re-render. */}
       < button onClick={() => reset()}>
         Try again
