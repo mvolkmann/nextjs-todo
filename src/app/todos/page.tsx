@@ -1,4 +1,7 @@
+'use client';
+
 import { getTodos } from '@/lib/apis';
+import BlogButton from '@/components/BlogButton';
 import Other from '@/components/Other';
 import TodoItem from './TodoItem';
 
@@ -12,6 +15,7 @@ export default async function TodosPage() {
   return (
     <section>
       <Other />
+      <BlogButton />
       <ul className="list-none">
         {todos.map((todo: Todo) =>
           <TodoItem key={todo.id} todo={todo} />
