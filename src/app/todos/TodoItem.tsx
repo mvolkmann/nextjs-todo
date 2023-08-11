@@ -1,6 +1,7 @@
 'use client'; // needed to specify event handling
 
 import Link from 'next/link';
+import type { Todo } from '@/types.d';
 
 import { Borel } from 'next/font/google';
 const font = Borel({
@@ -9,7 +10,7 @@ const font = Borel({
   display: 'swap',
   subsets: ['latin'],
   // "Variable fonts" do not need to specify weights.
-  weight: '400' // can be an array of weight strings
+  weight: '400', // can be an array of weight strings
 });
 
 function getClassName(todo: Todo): string {
@@ -21,9 +22,8 @@ function getStyle(todo: Todo): object {
 }
 
 type Props = {
-  key: number,
-  todo: Todo
-}
+  todo: Todo;
+};
 
 export default function TodoItem(props: Props) {
   const todo: Todo = props.todo;
@@ -33,20 +33,18 @@ export default function TodoItem(props: Props) {
   }
 
   return (
-    <li key={props.key}>
+    <li key={todo.id}>
       {/* font.className is an auto-generated CSS class name. */}
       <div className={`flex gap-2 items-center ${font.className}`}>
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={onChange}
-        />
+        <input type="checkbox" checked={todo.completed} onChange={onChange} />
         <span className={getClassName(todo)} style={getStyle(todo)}>
           {todo.title}
         </span>
         <button>🗑</button>
-        <Link className="button" href={`/todo/${todo.id}`}>Jump</Link>
+        <Link className="button" href={`/todo/${todo.id}`}>
+          Jump
+        </Link>
       </div>
     </li>
-  )
+  );
 }

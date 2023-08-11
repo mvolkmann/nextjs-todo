@@ -10,7 +10,7 @@ export default function BlogButton() {
   }
 
   return (
-    <button className="button" onClick={goToBlog}>
+    <button className="button my-4" onClick={goToBlog}>
       My Blog
     </button>
   );

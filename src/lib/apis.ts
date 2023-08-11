@@ -1,10 +1,10 @@
 const sleep = async (ms: number) =>
-  new Promise(resolve => setTimeout(resolve, ms));
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function getTodos(): Promise<Todo[]> {
   console.log('sleeping');
   // Simulate a long-running request.
-  await sleep(1000);
+  await sleep(500);
   console.log('awake');
 
   const url = 'https://jsonplaceholder.typicode.com/todos';
