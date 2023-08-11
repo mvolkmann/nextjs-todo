@@ -27,7 +27,6 @@ type Props = {
 
 export default function TodoItem(props: Props) {
   const todo: Todo = props.todo;
-  console.log('todo.tsx: todo =', todo);
 
   function onChange(event: React.ChangeEvent<HTMLInputElement>) {
     console.log('todo.tsx onChange: entered');

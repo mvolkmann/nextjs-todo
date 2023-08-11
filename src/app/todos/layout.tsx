@@ -5,7 +5,7 @@ export default function TodoLayout(
 ) {
   return (
     <section>
-      <h1>Next.js Todo App</h1>
+      <h2>Todos Page</h2>
       <div>{children}</div>
     </section>
   )
