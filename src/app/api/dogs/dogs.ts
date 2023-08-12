@@ -15,7 +15,9 @@ export function addDog(dog: Dog) {
 }
 
 export function deleteDog(name: string): Dog | undefined {
+  console.log('dogs.ts deleteDog: name =', name);
   const dog = dogs.find((d) => d.name === name);
+  console.log('dogs.ts deleteDog: dog =', dog);
   if (dog) dogs = dogs.filter((d) => d.name !== name);
   return dog;
 }

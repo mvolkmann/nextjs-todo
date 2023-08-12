@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 const limiter = new RateLimiter({
   fireImmediately: true,
   interval: 'min',
-  tokensPerInterval: 5,
+  tokensPerInterval: 8,
 });
 
 export async function getLimitedResponse(

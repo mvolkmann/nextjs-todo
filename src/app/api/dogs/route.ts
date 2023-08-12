@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { addDog, getDogs, updateDog, type Dog } from './dogs';
+import { jsonCorsResponse } from '@/app/api/cors';
 import { getLimitedResponse } from '@/app/api/limiter';
 
 export async function GET(request: Request) {
@@ -8,18 +9,9 @@ export async function GET(request: Request) {
 
   const dogs = getDogs();
 
-  // This simple approach works when we don't need to configure CORS.
+  // This approach works when we don't need to configure CORS.
   //return NextResponse.json(dogs);
-
-  // This approach is needed to configure CORS.
-  const origin = request.headers.get('origin');
-  return new NextResponse(JSON.stringify(dogs), {
-    headers: {
-      // '*' allows tools like Postman and Thunder Client to send requests.
-      'Access-Control-Allow-Origin': origin || '*',
-      'Content-Type': 'application/json',
-    },
-  });
+  return jsonCorsResponse(request, dogs);
 }
 
 export async function POST(request: Request) {
@@ -28,7 +20,10 @@ export async function POST(request: Request) {
 
   const dog: Dog = await request.json();
   addDog(dog);
-  return NextResponse.json(dog);
+
+  // This approach works when we don't need to configure CORS.
+  //return NextResponse.json(dog);
+  return jsonCorsResponse(request, dog);
 }
 
 export async function PUT(request: Request) {

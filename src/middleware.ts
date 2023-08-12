@@ -1,5 +1,12 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
+// The allowed origins differ based on whether
+// we are running in production or development mode.
+// We can test access from google.com in development mode
+// by browsing that site and sending requests from the DevTools Console.
+// To this, enter the following:
+// const res = await fetch('http://localhost:3000/api/dogs')
+// console.log(await res.json())
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
     ? ['http://www.mysite.com', 'https://mysite.com']
@@ -23,6 +30,9 @@ export function middleware(request: NextRequest) {
   // nextURL is a URL object w/ many properties.
   // console.log('middleware: nextUrl =', nextUrl);
 
+  // This enforces CORS restrictions.
+  // In production mode you may want to add "|| !origin"
+  // to block access from tools like Postman or Thunder Client.
   if (origin && !allowedOrigins.includes(origin)) {
     return new NextResponse(null, {
       status: 400,
@@ -40,10 +50,11 @@ export function middleware(request: NextRequest) {
 }
 
 // By default this middleware runs for every request
-// including request for static assets (like images),
-// client-side files, and APIs.
+// including requests for static assets (like images),
+// requests for client-side files, and API requests.
 // The exported config object restricts the requests
 // for which this middleware will run.
+// Here we only want to run the middleware for API requests.
 export const config = {
   // Can specify an array of paths.
   // Each path can be a regular expression.
