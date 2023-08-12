@@ -11,20 +11,17 @@ const allowedOrigins =
 // This function can be async.
 export function middleware(request: NextRequest) {
   const { headers, method, nextUrl, url } = request;
+
   // const { origin } = nextUrl;
   const origin = headers.get('origin');
 
   // method is GET, POST, PUT, or DELETE.
-  console.log('middleware: method =', method);
+  // url is a string like "http://localhost:3000/api/dogs".
+  // origin can be null or a string like "http://localhost:3000".
+  console.log('middleware:', method, url, 'from', origin);
 
   // nextURL is a URL object w/ many properties.
-  console.log('middleware: nextUrl =', nextUrl);
-
-  // Origin can be null or a string like "http://localhost:3000".
-  console.log('middleware: origin =', origin);
-
-  // URL is a string like "http://localhost:3000/api/dogs".
-  console.log('middleware: url =', url);
+  // console.log('middleware: nextUrl =', nextUrl);
 
   if (origin && !allowedOrigins.includes(origin)) {
     return new NextResponse(null, {

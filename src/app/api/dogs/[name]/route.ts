@@ -7,7 +7,7 @@ type Props = {
 };
 
 export async function DELETE(request: Request, { params: { name } }: Props) {
-  const response = getLimitedResponse(request);
+  const response = await getLimitedResponse(request);
   if (response) return response;
 
   const result = deleteDog(name);
@@ -15,8 +15,8 @@ export async function DELETE(request: Request, { params: { name } }: Props) {
   return NextResponse.json(null, { status });
 }
 
-export function GET(request: Request, { params: { name } }: Props) {
-  const response = getLimitedResponse(request);
+export async function GET(request: Request, { params: { name } }: Props) {
+  const response = await getLimitedResponse(request);
   if (response) return response;
 
   const dog = getDog(name);

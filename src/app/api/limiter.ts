@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 const limiter = new RateLimiter({
   fireImmediately: true,
   interval: 'min',
-  tokensPerInterval: 3,
+  tokensPerInterval: 5,
 });
 
 export async function getLimitedResponse(
@@ -16,7 +16,6 @@ export async function getLimitedResponse(
   if (remaining >= 0) return null; // allow request
 
   // Reject request.
-  console.log('limiter.ts: request =', request);
   const origin = request.headers.get('origin');
   return new NextResponse(null, {
     status: 429,

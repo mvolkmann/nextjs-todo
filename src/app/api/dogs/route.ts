@@ -3,7 +3,7 @@ import { addDog, getDogs, updateDog, type Dog } from './dogs';
 import { getLimitedResponse } from '@/app/api/limiter';
 
 export async function GET(request: Request) {
-  const response = getLimitedResponse(request);
+  const response = await getLimitedResponse(request);
   if (response) return response;
 
   const dogs = getDogs();
@@ -12,7 +12,6 @@ export async function GET(request: Request) {
   //return NextResponse.json(dogs);
 
   // This approach is needed to configure CORS.
-  console.log('route.ts GET: request =', request);
   const origin = request.headers.get('origin');
   return new NextResponse(JSON.stringify(dogs), {
     headers: {
@@ -24,7 +23,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const response = getLimitedResponse(request);
+  const response = await getLimitedResponse(request);
   if (response) return response;
 
   const dog: Dog = await request.json();
@@ -33,7 +32,7 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
-  const response = getLimitedResponse(request);
+  const response = await getLimitedResponse(request);
   if (response) return response;
 
   const dog: Dog = await request.json();
