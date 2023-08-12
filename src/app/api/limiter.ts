@@ -1,7 +1,6 @@
 import { RateLimiter } from 'limiter';
 import { NextResponse } from 'next/server';
 
-// 3 tokens per minute
 const limiter = new RateLimiter({
   fireImmediately: true,
   interval: 'min',
