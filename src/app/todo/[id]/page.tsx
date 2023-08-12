@@ -4,8 +4,9 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { TodosContext } from '@/app/context/todos-context';
+import { DogsContext } from '@/app/context/dogs-context';
 import { getTodos } from '@/lib/apis';
+import type { Todo } from '@/types.d';
 
 type Props = {
   params: {
@@ -14,7 +15,7 @@ type Props = {
 };
 
 export default async function TodoPage({ params: { id } }: Props) {
-  const context = useContext(TodosContext);
+  const context = useContext(DogsContext);
   console.log('page.tsx TodoPage: context =', context);
 
   // params properties are always strings.
