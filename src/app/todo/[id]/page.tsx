@@ -7,13 +7,13 @@ import { notFound } from 'next/navigation';
 import { TodosContext } from '@/app/context/todos-context';
 import { getTodos } from '@/lib/apis';
 
-type Params = {
+type Props = {
   params: {
     id: number;
   };
 };
 
-export default async function TodoPage({ params: { id } }: Params) {
+export default async function TodoPage({ params: { id } }: Props) {
   const context = useContext(TodosContext);
   console.log('page.tsx TodoPage: context =', context);
 

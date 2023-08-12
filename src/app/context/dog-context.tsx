@@ -9,7 +9,7 @@ interface DogData {
   setName: (name: string) => void;
 }
 
-export const DogContext = createContext<DogData>({
+const DogContext = createContext<DogData>({
   breed: '',
   name: '',
   setBreed: (string) => '',

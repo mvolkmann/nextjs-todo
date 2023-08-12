@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDogContext } from '@/app/context/dog-context';
 
 export default function Dog() {
