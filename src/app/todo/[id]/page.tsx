@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { DogsContext } from '@/app/context/dogs-context';
 import { getTodos } from '@/lib/todos-api';
 import type { Todo } from '@/types.d';
 
@@ -15,14 +14,11 @@ type Props = {
 };
 
 export default async function TodoPage({ params: { id } }: Props) {
-  const context = useContext(DogsContext);
-  console.log('page.tsx TodoPage: context =', context);
-
   // params properties are always strings.
   const number = Number(id);
 
   const todos: Todo[] = await getTodos();
-  const todo = todos.find((t) => t.id === number);
+  const todo = todos.find(t => t.id === number);
   if (!todo) return notFound();
 
   return (
