@@ -1,5 +1,6 @@
 import { retrieveDogs, type Dog } from '@/lib/dogs-api';
-import DogComponent from './DogComponent';
+import DogRow from './DogRow';
+import NewDog from './NewDog';
 
 // This is one way to preventing caching API results used by this page.
 // A value of `false` is the default which does use cached responses.
@@ -13,11 +14,12 @@ export default async function DogsPage() {
   const dogs = await retrieveDogs();
 
   return (
-    <section>
+    <section className="flex flex-col gap-4">
       <h2>Dogs</h2>
+      <NewDog />
       <ul className="list-none">
         {dogs.map((dog: Dog) => (
-          <DogComponent key={dog.id} dog={dog} />
+          <DogRow key={dog.id} dog={dog} />
         ))}
       </ul>
     </section>

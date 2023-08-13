@@ -9,7 +9,7 @@ export interface Dog extends NewDog {
   id: number;
 }
 
-export async function createDog(dog: Dog): Promise<Dog> {
+export async function createDog(dog: NewDog): Promise<Dog> {
   const res = await fetch(BASE_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

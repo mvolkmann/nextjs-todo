@@ -6,11 +6,13 @@ createDog({ name: 'Comet', breed: 'whippet' });
 createDog({ name: 'Maisey', breed: 'Treeing Walker Coonhound' });
 createDog({ name: 'Oscar', breed: 'German Shorthaired Pointer' });
 createDog({ name: 'Ramsay', breed: 'Native American Indian Dog' });
+sort();
 
 export function createDog(newDog: NewDog) {
   lastId++;
   const dog = { id: lastId, ...newDog };
   dogs.push(dog);
+  sort();
 }
 
 export function deleteDog(id: number): Dog | undefined {
@@ -25,6 +27,10 @@ export function getDog(id: number): Dog | undefined {
   return dogs.find(d => d.id === id);
 }
 
+function sort() {
+  dogs.sort((d1, d2) => d1.name.localeCompare(d2.name));
+}
+
 export function updateDog(dog: Dog): Dog | undefined {
   const { id } = dog;
   const existingDog = dogs.find(d => d.id === id);
@@ -32,5 +38,6 @@ export function updateDog(dog: Dog): Dog | undefined {
     existingDog.breed = dog.breed;
     existingDog.name = dog.name;
   }
+  sort();
   return existingDog;
 }

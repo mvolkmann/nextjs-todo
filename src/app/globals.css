@@ -29,9 +29,26 @@ body {
   padding: 0 0.2rem;
 }
 
+.button:disabled {
+  color: lightgray;
+  border-color: light-gray;
+}
+
 h1 {
   color: purple;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+h2 {
+  color: blue;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+input[type='text'] {
+  --radius: 0.4rem;
+  border-radius: var(--radius);
+  outline: 1px solid lightgray;
+  padding: var(--radius);
+}

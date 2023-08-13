@@ -3,11 +3,11 @@
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useState } from 'react';
 import { deleteDog, updateDog, type Dog } from '@/lib/dogs-api';
-import './DogComponent.css';
+import './DogRow.css';
 
 type Props = { dog: Dog };
 
-export default function DogComponent({ dog }: Props) {
+export default function DogRow({ dog }: Props) {
   const router = useRouter();
   const [breed, setBreed] = useState(dog.breed);
   const [editing, setEditing] = useState(false);
@@ -46,9 +46,15 @@ export default function DogComponent({ dog }: Props) {
             className="mr-4"
             onChange={updateName}
             placeholder="name"
+            type="text"
             value={name}
           />
-          <input onChange={updateBreed} placeholder="breed" value={breed} />
+          <input
+            onChange={updateBreed}
+            placeholder="breed"
+            type="text"
+            value={breed}
+          />
         </span>
       ) : (
         <span>
