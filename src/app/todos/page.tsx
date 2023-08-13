@@ -3,7 +3,7 @@
 import { useDogContext } from '@/app/context/dog-context';
 import BlogButton from '@/components/BlogButton';
 import Dog from '@/components/Dog';
-import { getTodos } from '@/lib/apis';
+import { getTodos } from '@/lib/todos-api';
 import TodoItem from './TodoItem';
 import type { Todo } from '@/types.d';
 

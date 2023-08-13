@@ -1,36 +1,36 @@
-export type Dog = {
-  name: string;
-  breed: string;
-};
+import { type Dog, type NewDog } from '@/lib/dogs-api';
 
-export let dogs: Dog[] = [
-  { name: 'Comet', breed: 'whippet' },
-  { name: 'Maisey', breed: 'Treeing Walker Coonhound' },
-  { name: 'Oscar', breed: 'German Shorthaired Pointer' },
-  { name: 'Ramsay', breed: 'Native American Indian Dog' },
-];
+let lastId = 0;
+export let dogs: Dog[] = [];
+createDog({ name: 'Comet', breed: 'whippet' });
+createDog({ name: 'Maisey', breed: 'Treeing Walker Coonhound' });
+createDog({ name: 'Oscar', breed: 'German Shorthaired Pointer' });
+createDog({ name: 'Ramsay', breed: 'Native American Indian Dog' });
 
-export function addDog(dog: Dog) {
+export function createDog(newDog: NewDog) {
+  lastId++;
+  const dog = { id: lastId, ...newDog };
   dogs.push(dog);
 }
 
-export function deleteDog(name: string): Dog | undefined {
-  console.log('dogs.ts deleteDog: name =', name);
-  const dog = dogs.find((d) => d.name === name);
-  console.log('dogs.ts deleteDog: dog =', dog);
-  if (dog) dogs = dogs.filter((d) => d.name !== name);
+export function deleteDog(id: number): Dog | undefined {
+  const dog = dogs.find(d => d.id === id);
+  if (dog) dogs = dogs.filter(d => d.id !== id);
   return dog;
 }
 
 export const getDogs = () => dogs;
 
-export function getDog(name: string): Dog | undefined {
-  return dogs.find((d) => d.name === name);
+export function getDog(id: number): Dog | undefined {
+  return dogs.find(d => d.id === id);
 }
 
 export function updateDog(dog: Dog): Dog | undefined {
-  const { breed, name } = dog;
-  const existingDog = dogs.find((d) => d.name === name);
-  if (existingDog) existingDog.breed = breed;
+  const { id } = dog;
+  const existingDog = dogs.find(d => d.id === id);
+  if (existingDog) {
+    existingDog.breed = dog.breed;
+    existingDog.name = dog.name;
+  }
   return existingDog;
 }

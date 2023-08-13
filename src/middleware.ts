@@ -4,7 +4,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
     ? ['http://www.mysite.com', 'https://mysite.com']
-    : ['http://locahost:3000', 'https://www.google.com']; // for testing CORS
+    : ['http://localhost:3000', 'https://www.google.com']; // for testing CORS
 
 // This function can optionally be async.
 export function middleware(request: NextRequest) {

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { addDog, getDogs, updateDog, type Dog } from './dogs';
 import { jsonCorsResponse } from '@/app/api/cors';
 import { getLimitedResponse } from '@/app/api/limiter';
+import { type Dog } from '@/lib/dogs-api';
+import { createDog, getDogs, updateDog } from './dogs';
 
 export async function GET(request: Request) {
   const response = await getLimitedResponse(request);
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
   if (response) return response;
 
   const dog: Dog = await request.json();
-  addDog(dog);
+  createDog(dog);
 
   // This approach works when we don't need to configure CORS.
   //return NextResponse.json(dog);

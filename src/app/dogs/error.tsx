@@ -16,8 +16,6 @@ export default function Error({ error, reset }: Props) {
   return (
     <section>
       <h2>{error.message}</h2>
-      {/* Attempt to recover by trying to re-render. */}
-      <button onClick={() => reset()}>Try again</button>
     </section>
   );
 }

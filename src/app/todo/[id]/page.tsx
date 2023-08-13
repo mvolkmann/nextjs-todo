@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { DogsContext } from '@/app/context/dogs-context';
-import { getTodos } from '@/lib/apis';
+import { getTodos } from '@/lib/todos-api';
 import type { Todo } from '@/types.d';
 
 type Props = {
