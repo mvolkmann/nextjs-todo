@@ -2,9 +2,11 @@ import { getDogs, type Dog } from '@/lib/dogs-api';
 import DogComponent from './DogComponent';
 
 // This shows one way to preventing caching API results used by this page.
+// A value of `false` is the default which does use cached responses.
 // A value of zero causes "dynamic rendering"
 // which does not use cached responses.
-// A value of false is the default which does use cached responses.
+// This is especially useful during development
+// to avoid confusion caused by seeing cached results.
 export const revalidate = 0;
 
 export default async function DogsPage() {
