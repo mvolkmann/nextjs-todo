@@ -13,7 +13,6 @@ export default function DogComponent({ dog }: Props) {
 
   async function handleDelete() {
     await deleteDog(dog.id);
-    // TODO: How can you trigger page to update so deleted dog disappears?
   }
 
   function handleEdit() {

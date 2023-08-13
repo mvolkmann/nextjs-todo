@@ -13,6 +13,7 @@ export async function createDog(dog: Dog): Promise<Dog> {
   const res = await fetch(BASE_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dog),
   });
 
   if (!res.ok) throw new Error('Failed to create dog.');
@@ -46,6 +47,7 @@ export async function updateDog(dog: Dog): Promise<Dog> {
   const res = await fetch(BASE_URL, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dog),
   });
   if (!res.ok) throw new Error('Failed to update dog.');
   return res.json();

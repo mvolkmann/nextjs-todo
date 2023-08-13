@@ -1,3 +1,5 @@
+'use client';
+
 import { getDogs, type Dog } from '@/lib/dogs-api';
 import DogComponent from './DogComponent';
 
@@ -10,7 +12,7 @@ import DogComponent from './DogComponent';
 export const revalidate = 0;
 
 export default async function DogsPage() {
-  const dogs: Dog[] = await getDogs();
+  const dogs = await getDogs();
 
   return (
     <section>

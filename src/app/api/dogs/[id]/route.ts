@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { jsonCorsResponse } from '@/app/api/cors';
 import { getLimitedResponse } from '@/app/api/limiter';
 import { deleteDog, getDog } from '../dogs';
@@ -11,6 +12,7 @@ export async function DELETE(request: Request, { params: { id } }: Props) {
   if (response) return response;
 
   const result = await deleteDog(Number(id));
+  revalidatePath('/dogs');
   const status = result ? 200 : 404;
   // This approach works when we don't need to configure CORS.
   //return NextResponse.json(null, { status });
