@@ -1,4 +1,9 @@
-.dog-component button {
-  border-color: red;
-  border-width: 1px;
+.dog-component {
+  > button {
+    border-color: red;
+    border-width: 1px;
+  }
+  > span {
+    font-weight: bold;
+  }
 }
