@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
   const dog: Dog = await request.json();
   createDog(dog);
-  revalidatePath('/dogs');
+  // revalidatePath('/dogs');
 
   // This approach works when we don't need to configure CORS.
   //return NextResponse.json(dog);
@@ -36,7 +36,7 @@ export async function PUT(request: Request) {
   const dog: Dog = await request.json();
   const result = updateDog(dog);
   if (result) {
-    revalidatePath('/dogs');
+    // revalidatePath('/dogs');
     return NextResponse.json(dog);
   } else {
     return NextResponse.json(null, { status: 404 });

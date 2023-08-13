@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
   // url is a string like "http://localhost:3000/api/dogs".
   // origin can be null or a string like "http://localhost:3000".
   // nextURL is a URL object w/ many properties.
-  console.log('middleware:', method, url, 'from', origin);
+  console.info('middleware:', method, url, 'from', origin);
 
   // This enforces CORS restrictions.
   // In production mode you may want to add "|| !origin"

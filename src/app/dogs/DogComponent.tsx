@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useState } from 'react';
 import { deleteDog, updateDog, type Dog } from '@/lib/dogs-api';
 import './DogComponent.css';
@@ -7,12 +8,14 @@ import './DogComponent.css';
 type Props = { dog: Dog };
 
 export default function DogComponent({ dog }: Props) {
+  const router = useRouter();
   const [breed, setBreed] = useState(dog.breed);
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(dog.name);
 
   async function handleDelete() {
     await deleteDog(dog.id);
+    refresh();
   }
 
   function handleEdit() {
@@ -22,7 +25,10 @@ export default function DogComponent({ dog }: Props) {
   async function handleSave() {
     await updateDog({ id: dog.id, breed, name });
     setEditing(false);
+    refresh();
   }
+
+  const refresh = () => router.refresh();
 
   function updateBreed(event: ChangeEvent<HTMLInputElement>) {
     setBreed(event.target.value);
@@ -33,10 +39,15 @@ export default function DogComponent({ dog }: Props) {
   }
 
   return (
-    <div className="dog-component">
+    <div className="dog-component flex gap-4">
       {editing ? (
         <span>
-          <input onChange={updateName} placeholder="name" value={name} />
+          <input
+            className="mr-4"
+            onChange={updateName}
+            placeholder="name"
+            value={name}
+          />
           <input onChange={updateBreed} placeholder="breed" value={breed} />
         </span>
       ) : (

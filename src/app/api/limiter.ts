@@ -11,7 +11,7 @@ export async function getLimitedResponse(
   request: Request,
 ): Promise<NextResponse | null> {
   const remaining = await limiter.removeTokens(1);
-  console.log('limiter.ts: remaining =', remaining);
+  console.info('limiter.ts: remaining =', remaining);
   if (remaining >= 0) return null; // allow request
 
   // Reject request.
