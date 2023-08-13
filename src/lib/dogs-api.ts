@@ -35,9 +35,9 @@ export async function getDog(id: number): Promise<Dog> {
 }
 
 export async function getDogs(): Promise<Dog[]> {
-  console.log('dogs-api.ts getDogs: entered');
-  // We are preventing caching of this response.
-  const res = await fetch(BASE_URL, { cache: 'no-store' });
+  // This shows one way to preventing caching of this response.
+  // const res = await fetch(BASE_URL, { cache: 'no-store' });
+  const res = await fetch(BASE_URL);
   if (!res.ok) throw new Error('Failed to fetch dogs.');
   return res.json();
 }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { deleteDog, type Dog } from '@/lib/dogs-api';
+import './DogComponent.css';
 
 type Props = { dog: Dog };
 
@@ -11,8 +12,11 @@ export default function DogComponent({ dog }: Props) {
   }
 
   return (
-    <div>
-      {dog.name} is a {dog.breed}.<button onClick={handleClick}>🗑</button>
+    <div className="dog-component">
+      <span>
+        {dog.name} is a {dog.breed}.
+      </span>
+      <button onClick={handleClick}>🗑</button>
     </div>
   );
 }

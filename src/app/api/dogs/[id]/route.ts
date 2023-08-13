@@ -7,13 +7,10 @@ type Props = {
 };
 
 export async function DELETE(request: Request, { params: { id } }: Props) {
-  console.log('route.ts DELETE: id =', id);
   const response = await getLimitedResponse(request);
-  console.log('route.ts DELETE: response =', response);
   if (response) return response;
 
   const result = await deleteDog(Number(id));
-  console.log('route.ts DELETE: result =', result);
   const status = result ? 200 : 404;
   // This approach works when we don't need to configure CORS.
   //return NextResponse.json(null, { status });
