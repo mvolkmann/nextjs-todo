@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+// import { getLimitedResponse } from '@/app/api/limiter';
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production'
@@ -26,6 +27,13 @@ export function middleware(request: NextRequest) {
       statusText: 'Bad Request',
     });
   }
+
+  /*
+  // I tried to apply rate limiting here instead of in each route handler,
+  // but that gives "error Cannot read properties of undefined (reading 'now')".
+  const response = await getLimitedResponse(request);
+  if (response) return response;
+  */
 
   // Proceed to intended URL.
   return NextResponse.next();

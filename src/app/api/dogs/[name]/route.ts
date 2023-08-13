@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import { deleteDog, getDog, type Dog } from '../dogs';
 import { jsonCorsResponse } from '@/app/api/cors';
 import { getLimitedResponse } from '@/app/api/limiter';
