@@ -1,4 +1,4 @@
-import { useDogContext } from '@/app/context/dog-context';
+import { useDogContext } from '@app/context/dog-context';
 
 export default function Dog() {
   const { breed, name } = useDogContext();

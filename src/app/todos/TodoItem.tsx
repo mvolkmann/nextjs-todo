@@ -1,7 +1,7 @@
 'use client'; // needed to specify event handling
 
 import Link from 'next/link';
-import type { Todo } from '@/types.d';
+import type { Todo } from '@types.d';
 
 import { Borel } from 'next/font/google';
 const font = Borel({

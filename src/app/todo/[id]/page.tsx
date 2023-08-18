@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getTodos } from '@/lib/todos-api';
-import type { Todo } from '@/types.d';
+import { getTodos } from '@lib/todos-api';
+import type { Todo } from '@types.d';
 
 type Props = {
   params: {

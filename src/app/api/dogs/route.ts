@@ -1,8 +1,8 @@
 import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
-import { jsonCorsResponse } from '@/app/api/cors';
-import { getLimitedResponse } from '@/app/api/limiter';
-import { type Dog } from '@/lib/dogs-api';
+import { jsonCorsResponse } from '@app/api/cors';
+import { getLimitedResponse } from '@app/api/limiter';
+import { type Dog } from '@lib/dogs-api';
 import { createDog, getDogs, updateDog } from './dogs';
 
 export async function GET(request: Request) {

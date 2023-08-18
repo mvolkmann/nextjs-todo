@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useState } from 'react';
-import { createDog, type NewDog } from '@/lib/dogs-api';
+import { createDog, type NewDog } from '@lib/dogs-api';
 
 export default function NewDog() {
   const router = useRouter();

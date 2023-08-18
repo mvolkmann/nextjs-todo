@@ -1,9 +1,9 @@
-import { useDogContext } from '@/app/context/dog-context';
-import BlogButton from '@/components/BlogButton';
-import Dog from '@/components/Dog';
-import { getTodos } from '@/lib/todos-api';
+import { useDogContext } from '@app/context/dog-context';
+import BlogButton from '@components/BlogButton';
+import Dog from '@components/Dog';
+import { getTodos } from '@lib/todos-api';
 import TodoItem from './TodoItem';
-import type { Todo } from '@/types.d';
+import type { Todo } from '@types.d';
 
 export default async function TodosPage() {
   const todos: Todo[] = await getTodos();

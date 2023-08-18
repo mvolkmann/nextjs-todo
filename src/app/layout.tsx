@@ -1,5 +1,5 @@
 import './globals.css';
-import { DogContextProvider } from '@/app/context/dog-context';
+import { DogContextProvider } from '@app/context/dog-context';
 
 type Props = { children: React.ReactNode };
 

@@ -1,4 +1,4 @@
-import { type Dog, type NewDog } from '@/lib/dogs-api';
+import { type Dog, type NewDog } from '@lib/dogs-api';
 
 let lastId = 0;
 export let dogs: Dog[] = [];

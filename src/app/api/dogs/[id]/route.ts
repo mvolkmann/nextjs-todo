@@ -1,6 +1,6 @@
 import { revalidatePath } from 'next/cache';
-import { jsonCorsResponse } from '@/app/api/cors';
-import { getLimitedResponse } from '@/app/api/limiter';
+import { jsonCorsResponse } from '@app/api/cors';
+import { getLimitedResponse } from '@app/api/limiter';
 import { deleteDog, getDog } from '../dogs';
 
 type Props = {

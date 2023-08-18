@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useState } from 'react';
-import { deleteDog, updateDog, type Dog } from '@/lib/dogs-api';
+import { deleteDog, updateDog, type Dog } from '@lib/dogs-api';
 import './DogRow.css';
 
 type Props = { dog: Dog };
@@ -39,7 +39,7 @@ export default function DogRow({ dog }: Props) {
   }
 
   return (
-    <div className="dog-component flex gap-4">
+    <div className="dog-row flex gap-4">
       {editing ? (
         <span>
           <input

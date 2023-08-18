@@ -1,4 +1,4 @@
-import { retrieveDogs, type Dog } from '@/lib/dogs-api';
+import { retrieveDogs, type Dog } from '@lib/dogs-api';
 import DogRow from './DogRow';
 import NewDog from './NewDog';
 
@@ -15,7 +15,7 @@ export default async function DogsPage() {
 
   return (
     <section className="flex flex-col gap-4">
-      <h2>Dogs</h2>
+      <h2 className="text-red-400">Dogs</h2>
       <NewDog />
       <ul className="list-none">
         {dogs.map((dog: Dog) => (

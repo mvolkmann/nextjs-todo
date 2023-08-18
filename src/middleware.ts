@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
-// import { getLimitedResponse } from '@/app/api/limiter';
+// import { getLimitedResponse } from '@app/api/limiter';
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production'

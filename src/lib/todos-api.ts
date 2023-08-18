@@ -1,4 +1,4 @@
-import { type Todo } from '@/types.d';
+import { type Todo } from '@types.d';
 
 const sleep = async (ms: number) =>
   new Promise(resolve => setTimeout(resolve, ms));
